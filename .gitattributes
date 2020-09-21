@@ -22,8 +22,7 @@
 # Jupyter notebook
 *.ipynb  text
 
-#Javascript hiding
-
+#Hiding Javascript code from ace editor 
 *.js linguist-language=python
 
 # Note: .db, .p, and .pkl files are associated
