@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Сторінка користувача {{ user.get_username }}
+{% endblock %}
+
+{% block content %}
+<div>
+<h1>Мої дані:</h1>
+<ul style="list-style-type: none; float: left; text-align: left">
+    <li>Ім'я: {{ user.first_name }}</li>
+    <li>Прізвище: {{ user.last_name }}</li>
+    <li>Username: {{ user.username }}</li>
+    <li>e-mail: {{ user.email }}</li>
+    <li>Група: {{ user.groups.get }}</li>
+    <li>Останній вхід: {{ user.last_login }}</li>
+    <li>Дата реєстрації: {{ user.date_joined }}</li>
+
+
+</ul>
+</div>
+<p></p>
+<div style="margin-top: 200px">
+    <h2>Доступні дисципліни:</h2>
+
+    {% if subjects_list %}
+
+        {% for b in subjects_list %}
+
+            <div class="listing">
+            <a href ="{% url 'articles:sub_detail' b.id %}">{{b.subject_name}}</a>
+
+            <br>
+            </div>
+        {% endfor %}
+
+    {% else %}
+
+        Не знайдено
+
+    {% endif %}
+
+
+
+
+</div>
+
+
+
+{% endblock %}

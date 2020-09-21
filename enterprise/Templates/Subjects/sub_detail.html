@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ subject.subject_name }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ subject.subject_name }}</h1>
+
+<h3>Викладач: {{ subject.subject_teacher }}</h3>
+
+<h1>Список завдань:</h1>
+
+    {% if latest_tests %}
+
+        {% for b in latest_tests %}
+
+            <a href ="{% url 'articles:test_case' b.id %}">{{b.case_name}}</a>
+
+            <br>
+
+        {% endfor %}
+
+    {% else %}
+
+        Не знайдено
+
+    {% endif %}
+
+{% endblock %}

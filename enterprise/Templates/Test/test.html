@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<script src="{% static "js/src-noconflict/ace.js" %}" type="text/javascript" charset="utf-8"></script>
+<script>
+    start_editor();
+</script>
+{% block title %} Триває тестування! {% endblock %}
+
+{% block content %}
+
+<h2>Тестове завдання!</h2>
+
+
+{% if user.is_anonymous %}
+<p> Ви не ввійшли в систему! Будь-ласка залогіньтеся! </p>
+{% else %}
+
+<h3>Залишилося часу: {{ test_time }}  секунд</h3>
+
+<h1>{{ response.name }}</h1>
+<h2>{{ response.body }}</h2>
+
+
+<div>
+<pre id="codearea" style="min-height: 600px; max-height: 55%; min-width: 300px; border-color: #3db2e1"></pre>
+</div>
+
+<script>
+    var editor = ace.edit("codearea");
+    editor.setTheme("ace/theme/github");
+    editor.session.setMode("ace/mode/python");
+    document.getElementById('codearea').style.fontSize='17px';
+</script>
+
+
+{% endif %}
+{% endblock %}

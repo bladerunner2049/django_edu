@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %} {{ test_case.case_name }} {% endblock %}
+
+{% block content %}
+
+<h2>{{test_case.case_name}}</h2>
+
+
+{% if user.is_anonymous %}
+<p> Ви не ввійшли в систему! Будь-ласка залогіньтеся! </p>
+{% else %}
+
+<h3>Тривалість завдання: {{ test_case.case_duration }}  хвилин</h3>
+
+<form action="{% url 'articles:testing' test_case.id %}">
+<button>Почати завдання!</button>
+</form>
+
+{% endif %}
+{% endblock %}

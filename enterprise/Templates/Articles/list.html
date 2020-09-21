@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Останні статті {% endblock %} 
+
+
+
+{% block content %}
+
+
+
+    <div class="main_title">
+    <H1>Останні новини</H1>
+    </div>
+
+    <div class="listing">
+    {% if latest_articles_list %}
+    
+        {% for a in latest_articles_list %}
+            <ul>
+                <li style="list-style-type: none">
+                    <a class="list_object" href ="{% url 'articles:detail' a.id %}">{{a.article_title}}</a>
+
+                </li>
+
+            </ul>
+        {% endfor %}
+    </div>
+    {% else %}
+
+        Не знайдено
+
+    {% endif %}
+
+{% endblock %}
+

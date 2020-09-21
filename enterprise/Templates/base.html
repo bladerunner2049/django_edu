@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="{% static "js/script.js" %}" />
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="{% static "js/src-noconflict/ace.js" %}" type="text/javascript" charset="utf-8"></script>
+    <title>{% block title %}Сайт{% endblock  %}</title>
+
+</head>
+<body>
+
+{% block header %}
+
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href="{% url 'articles:index' %}">Головна</a></li>
+   <li><a href="{% url 'articles:sub_list' %}">Дисципліни</a></li>
+   <li><a href='{% url 'articles:contacts' %}'>Контакти</a></li>
+   <li style="float: right">
+       {% if user.is_authenticated %}
+           <a href="{% url 'logout' %}">Вийти</a>
+       {% else %}
+           <a href="{% url 'login' %}">Ввійти</a>
+       {% endif %}
+   </li>
+   <li style="float: right"><a href="{% url 'articles:personal_page' %}">
+       {% if user.is_authenticated %}
+           Вітаємо, {{ user.get_username }}
+
+       {% endif %}
+   </a></li>
+</ul>
+</div>
+
+{%  endblock %}
+
+<div class="page_content">
+
+    <div class="category-wrap">
+        <h3>Список дисциплін</h3>
+        <ul>
+        {% if subjects_list %}
+
+        {% for b in subjects_list %}
+
+            <li><a href ="{% url 'articles:sub_detail' b.id %}">{{b.subject_name}}</a></li>
+
+            <br>
+
+        {% endfor %}
+
+        {% else %}
+
+        Не знайдено
+
+        {% endif %}
+        </ul>
+    </div>
+
+    <div class="articles_list">
+        {% block content %}{% endblock  %}
+    </div>
+
+</div>
+
+</body>
+</html>

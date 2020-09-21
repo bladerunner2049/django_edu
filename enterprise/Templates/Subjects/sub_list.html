@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Список дисциплін {% endblock %}
+
+
+
+{% block content %}
+
+
+
+    <div class="main_title">
+    <H1>Список дисциплін</H1>
+    </div>
+
+    {% if subjects_list %}
+
+        {% for b in subjects_list %}
+
+            <div class="listing">
+            <a href ="{% url 'articles:sub_detail' b.id %}">{{b.subject_name}}</a>
+
+            <br>
+            </div>
+        {% endfor %}
+
+    {% else %}
+
+        Не знайдено
+
+    {% endif %}
+
+{% endblock %}

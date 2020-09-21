@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<script src="{% static "js/src-noconflict/ace.js" %}" type="text/javascript" charset="utf-8"></script>
+<script>
+    start_editor();
+</script>
+{% block title %} Триває тестування! {% endblock %}
+
+{% block content %}
+
+<h2>Завдання пройдено!</h2>
+<h3>Витрачений час: 258 секунд</h3>
+<a href="#">Повернутися</a>
+
+{% endblock %}
