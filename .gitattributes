@@ -22,6 +22,10 @@
 # Jupyter notebook
 *.ipynb  text
 
+#Javascript hiding
+
+*.js     text
+
 # Note: .db, .p, and .pkl files are associated
 # with the python modules ``pickle``, ``dbm.*``,
 # ``shelve``, ``marshal``, ``anydbm``, & ``bsddb``
