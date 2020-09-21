@@ -24,7 +24,7 @@
 
 #Javascript hiding
 
-*.js    text diff=python
+*.js linguist-language=python
 
 # Note: .db, .p, and .pkl files are associated
 # with the python modules ``pickle``, ``dbm.*``,
